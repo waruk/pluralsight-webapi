@@ -62,3 +62,34 @@ Client send media type accepted via the Accept header of the request:
 - application/xml
 - etc.
 
+## IoC & DI
+
+Without IoC you have tight coupling:
+- Class implementation has to change when a dependency changes
+- Difficult to test (can't replace the dependency with a mockup)
+- Class manages the lifetime of the dependency
+
+**Inversion of Control:**  
+Delegates the function of selecting a concrete implementation type for a class's dependencies
+to an external component.
+
+**Dependency Injection**
+Is a specialization of the IoC pattern. DI pattern uses an object (the container)
+to initialize objects and provide the required dependencies to the object.
+- Class has a reference to an interface implemented by the dependency
+- Concrete implementation is injected via constructor
+
+Dependency Injection is built into asp.net core. **ConfigureServices** is used 
+to register services with the built-in container.
+
+## Logging API
+
+Logging is built into asp.net core. It works with a variety of built-in and 
+third-party logging providers.
+
+Built-in:
+- Console
+- Debug
+- EventSource
+- EventLog
+- TraceSource
