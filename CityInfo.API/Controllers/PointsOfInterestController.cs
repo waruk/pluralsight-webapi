@@ -26,7 +26,7 @@ namespace CityInfo.API.Controllers
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
             if (city == null)
             {
-                _logger.LogInformation($"City with id {cityId} was not found.");   // string interpolation synthax
+                _logger.LogInformation($"City with id {cityId} was not found.");   // string interpolation syntax
                 return NotFound();
             }
 
