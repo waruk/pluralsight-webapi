@@ -93,3 +93,18 @@ Built-in:
 - EventSource
 - EventLog
 - TraceSource
+
+## Custom services
+
+Services can be added in **Startup** class with the following lifetime:
+- AddTransient: created each time they are requested
+- AddScoped: created once per request
+- AddSingleton: created the first time they are requested and last for the 
+application lifetime?
+
+## Configuration files
+
+Create an IConfigurationRoot property in Startup class. It should be static.
+Inject an IConfiguration object in Startup contructor.  
+It is possible to have different configurations for different 
+environments (eg. appSettings.Production.json).

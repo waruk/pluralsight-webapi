@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CityInfo.API.Services
 {
-    public class LocalMailService : IMailService
+    public class CloudMailService : IMailService
     {
         private string _mailTo = Startup.Configuration["mailSettings:mailTo"];
         private string _mailFrom = Startup.Configuration["mailSettings:mailFrom"];
@@ -24,7 +24,7 @@ namespace CityInfo.API.Services
             mailMessage.From = new MailAddress(_mailFrom);
             mailMessage.To.Add(_mailTo);
             mailMessage.Body = $"{message}";
-            mailMessage.Subject = $"DEBUG: {subject}";
+            mailMessage.Subject = $"RELEASE: {subject}";
 
             client.Send(mailMessage);
         }
