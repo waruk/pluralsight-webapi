@@ -108,3 +108,5 @@ Create an IConfigurationRoot property in Startup class. It should be static.
 Inject an IConfiguration object in Startup contructor.  
 It is possible to have different configurations for different 
 environments (eg. appSettings.Production.json).
+
+## EF Core
