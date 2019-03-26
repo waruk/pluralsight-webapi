@@ -103,10 +103,34 @@ Services can be added in **Startup** class with the following lifetime:
 application lifetime?
 
 ## Configuration files
-
 Create an IConfigurationRoot property in Startup class. It should be static.
 Inject an IConfiguration object in Startup contructor.  
 It is possible to have different configurations for different 
 environments (eg. appSettings.Production.json).
 
 ## EF Core
+Code-first / Database-first  
+Has providers for:
+ - Sql Server
+ - Sql Lite
+ - PostgreSQL
+ - Sql Server CE
+ - MySql
+ - IBM DB2
+ - In-memory provider for testing
+
+**Migrations:**
+Add-Migration \<name>  
+Table _EFMigrationsHistory_ keeps track of migrations applied to the db.
+
+Sensitive data, such as connection strings, can be kept in **environment variabiles**.
+If defined via Visual Studio (project properties), these are kept in **launchSettings.json**,
+which can be used in development. For production server, define a system 
+environment variabile on that machine.
+
+**Seed data**
+
+There are several ways this can be accomplished in EF Core:
+- Model seed data
+- Manual migration customization
+- Custom initialization logic
