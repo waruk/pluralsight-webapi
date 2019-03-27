@@ -134,3 +134,15 @@ There are several ways this can be accomplished in EF Core:
 - Model seed data
 - Manual migration customization
 - Custom initialization logic
+
+## Repository Pattern
+
+- removes code duplication (same data may need to be accessed from different parts
+of the application)
+- improves controller testing by mocking data store logic
+
+**Definition**: An abstraction that reduces complexity and aims to make the code
+, safe for the repository implementation, persistance ignorant.
+
+persistance ignorant = alows the choise ofpersistance technology at method level.
+Eg. EF for creating an entity, ADO.NET for retriving an entity.
