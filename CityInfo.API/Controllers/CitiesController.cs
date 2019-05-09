@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CityInfo.API.Models;
 using CityInfo.API.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -24,30 +25,28 @@ namespace CityInfo.API.Controllers
             // an empty list of cities is a valid response: there are no cities
             var cities = _repository.GetCities();
 
-            var results = new List<CityWithoutPOIsDto>();
-
-            foreach (var cityEntity in cities)
-            {
-                results.Add(new CityWithoutPOIsDto
-                {
-                    Id = cityEntity.Id,
-                    Name = cityEntity.Name,
-                    Description = cityEntity.Description
-                });
-            }
+            var results = Mapper.Map<IEnumerable<CityWithoutPOIsDto>>(cities);
 
             return Ok(results);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCity(int id)
+        public IActionResult GetCity(int id, bool includePointsOfInterest = false)
         {
             //find city
-            var city = _repository.GetCity(id, false);
+            var city = _repository.GetCity(id, includePointsOfInterest);
             if (city == null)
                 return NotFound();
 
-            return Ok(city);
+            if (includePointsOfInterest)
+            {
+                var cityResult = Mapper.Map<CityDto>(city);
+
+                return Ok(cityResult);
+            }
+
+            var cityWithoutPointsOfInterestsResult = Mapper.Map<CityWithoutPOIsDto>(city);
+            return Ok(cityWithoutPointsOfInterestsResult);
         }
     }
 }

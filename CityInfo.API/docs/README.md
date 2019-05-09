@@ -144,5 +144,5 @@ of the application)
 **Definition**: An abstraction that reduces complexity and aims to make the code
 , safe for the repository implementation, persistance ignorant.
 
-persistance ignorant = alows the choise ofpersistance technology at method level.
+persistance ignorant = alows the choise of persistance technology at method level.
 Eg. EF for creating an entity, ADO.NET for retriving an entity.

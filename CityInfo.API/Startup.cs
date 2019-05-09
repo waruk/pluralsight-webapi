@@ -66,6 +66,14 @@ namespace CityInfo.API
             }
 
             app.UseStatusCodePages();
+
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Entities.City, Models.CityWithoutPOIsDto>();
+                cfg.CreateMap<Entities.City, Models.CityDto>();
+                cfg.CreateMap<Entities.PointOfInterest, Models.PointOfInterestDto>();
+            });
+
             app.UseMvc();
 
             //app.Run(async (context) =>
